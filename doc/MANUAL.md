@@ -1,31 +1,32 @@
 
-wiiscan(1)                                                          wiiscan(1)
+wiiscan(1)
 
 
-
-[1mNAME[0m
-       [4mwiiscan[24m - a connection utility for wii console remotes
+## NAME ##
 
 
-[1mSYNOPSIS[0m
+wiiscan - a connection utility for wii console remotes
+
+
+## SYNOPSIS ##
        wiiscan  <-a  <device> | -c <device> | -d <device> | -r | -s | -usbup |
        -usbdown> > [-cf <file>] [-lf <file>] [-b  <sleep>]  [-t  <sleep>]  [-u
        <sleep>]  [-p  <sleep>]  [-w <sleep>] [-q <usbradio>] [-f <removemode>]
        [-m <powermode>] [-l <wiilibrary>] [-wb] [-v]
 
 
-[1mOVERVIEW[0m
-       [4mwiiscan[24m is a canvas function for a number  of  different  scanning  and
+## OVERVIEW ##
+       wiiscan is a canvas function for a number  of  different  scanning  and
        connection utilities. It can detect build-in bluetooth radios, scan for
        nearby bluetooth devices, connect to a specific device and remove  that
        device again from the hardware.
 
-       The main feature of [4mwiiscan[24m is to automatically connect to a wii remote
+       The main feature of wiiscan is to automatically connect to a wii remote
        (wiimote). This can be quiet cumbersome on a Windows  system,  and  the
        nesseccary steps for doing a robust, working connection is done by
 
 
-       [1mDelete wiimote hardware HID bluetooth entry:[0m
+       Delete wiimote hardware HID bluetooth entry:
                delete old entries of the wiimote in the bluetooth hardware. On
                some windows system the wiimote is readily detected, after  the
                first  manually  installation.  Pressing  the  "1-2"  makes the
@@ -36,7 +37,7 @@ wiiscan(1)                                                          wiiscan(1)
                this feature.
 
 
-       [1mCycle USB bus:[0m
+       Cycle USB bus:
                the wiimote can be switched automatically to discoverable mode,
                if  the  power is briefly cut from the device. This can be done
                on a wiimote powered by the USB +5 volt (with a proper  voltage
@@ -46,7 +47,7 @@ wiiscan(1)                                                          wiiscan(1)
                by say some tape or gaffa!.
 
 
-       [1mScan for wiimote:[0m
+       Scan for wiimote:
                now comes the main part  of  the  connection;  scanning  for  a
                wiimote.  This includes bringing up the bluetooth radio device,
                initialize seek parameters, scanning and matching for a  device
@@ -76,10 +77,10 @@ wiiscan(1)                                                          wiiscan(1)
 
                Power  control over USB hubs is dependent on the particular hub
                devices, and disabling the power may not be possible for a sin‐
-               gle  USB  port  only. [4mwiiscan[24m uses a trick of disabling all USB
+               gle  USB  port  only. wiiscan uses a trick of disabling all USB
                hubs and then only enable and disable a singe hub.
 
-               Disabling all hubs is a precondition to running [4mwiiscan[24m and  it
+               Disabling all hubs is a precondition to running wiiscan and  it
                can be accomblised by either going into "Control Panel | System
                | Hardware | Device manager", and manually disable all USB hubs
                or by using "devcon", say (careful, these commands applies only
@@ -118,29 +119,29 @@ wiiscan(1)                                                          wiiscan(1)
        power cycle may cause severe interfere with the device.
 
 
-[1mDESCRIPTION[0m
-       [1m-a <device>[0m
+## DESCRIPTION ##
+       -a <device>
                auto-connect to a device.
 
 
-       [1m-c <device>[0m
+       -c <device>
                connects to a device.
 
 
-       [1m-d <device>[0m
+       -d <device>
                deletes a device, clears HID and bluetooth registry entries.
 
 
-       [1m-r      [22mlooks for active internal bluetooth radio devices.
+       -r      looks for active internal bluetooth radio devices.
 
 
-       [1m-s      [22mscans for external bluetooth devices.
+       -s      scans for external bluetooth devices.
 
 
-       [1m-usbup  [22mturn the USB hub on.
+       -usbup  turn the USB hub on.
 
 
-       [1m-usbdown[0m
+       -usbdown
                turn the USB hub off.
 
 
@@ -150,69 +151,69 @@ wiiscan(1)                                                          wiiscan(1)
        Note: "nintendo" is a shortcut for "Nintendo RVL-CNT-01"
 
 
-[1mOPTIONS[0m
-       [1m-cf <file>[0m
+## OPTIONS ##
+       -cf <file>
                load a specific configuration file.
 
 
-       [1m-lf <file>[0m
+       -lf <file>
                specify a distinct logfile.
 
 
-       [1m-b <sleep>[0m
+       -b <sleep>
                auto-mode bluetooth connection sleep in milliseconds.
 
 
-       [1m-t <sleep>[0m
+       -t <sleep>
                bluetooth scanning interval in milliseconds.
 
 
-       [1m-u <sleep>[0m
+       -u <sleep>
                auto-mode USB connection sleep in milliseconds.
 
 
-       [1m-p <sleep>[0m
+       -p <sleep>
                automode usbm post-connection sleep in milliseconds.
 
 
-       [1m-w <sleep>[0m
+       -w <sleep>
                timeout for wiimote in milliseconds.
 
 
-       [1m-q <usbradio>[0m
+       -q <usbradio>
                use bluetooth radio with this address. Note, this functionality
                is not working yet.
 
 
-       [1m-f <removemode>[0m
+       -f <removemode>
                pre-remove   mode  of  device,  0=remove  if  not  connectable,
                1=always remove, 2=never remove
 
 
-       [1m-m <powermode>[0m
+       -m <powermode>
                choose USB powercycle mode, 0=no power cycle,  1=use  USB  hub,
                2=use USBm IO hardware, 3=use USB Delcon IO hardware.
 
 
-       [1m-l <wiilibrary>[0m
+       -l <wiilibrary>
                use    specific    wiimote   library,   lib   can   be   one-of
                (wiiuse,wiimotelib).
 
 
-       [1m-y      [22mscan retries in automode.
+       -y      scan retries in automode.
 
 
-       [1m-wb     [22mstart whiteboard in auto-mode
+       -wb     start whiteboard in auto-mode
 
 
-       [1m-v      [22menable extra debugging printouts
+       -v      enable extra debugging printouts
 
 
-[1mFILES[0m
-       [4mwiiscan[24m looks for a file names wiiscan.ini when executing in the  auto‐
+## FILES ##
+       wiiscan looks for a file names wiiscan.ini when executing in the  auto‐
        mode. See detail in the file.
 
-[1mTIMING[0m
+## TIMING ##
        Various  timing  parametes  can  be  set  on the command line or in the
        inifile. The process of connecting is
 
@@ -246,7 +247,7 @@ wiiscan(1)                                                          wiiscan(1)
        option_wiitimeout.
 
 
-[1mEXAMPLE[0m
+## EXAMPLE ##
        Scanning for devices nearby:
 
          wiiscan -s
@@ -264,40 +265,40 @@ wiiscan(1)                                                          wiiscan(1)
          wiiscan -usbup
 
 
-[1mCOMPILING[0m
+## COMPILING ##
        The source code can  be  compiled  with  MS  Visual  C++  Express  2008
        (http:www.microsoft.com/express/vc/)  or  similar. It also needs wiiuse
        dlls (http:www.wiiuse.net/). If wiiuse is to be compiled by it self  it
-       needs  Windows  SDK  and  DDK, but running [4mwiiscan[24m with just the wiiuse
+       needs  Windows  SDK  and  DDK, but running wiiscan with just the wiiuse
        binaries is the easiest option.
 
        It does not work on Windows 2000, and has not been tried out on a Vista
        system.
 
 
-[1mTESTED SYSTEMS[0m
-       The  [4mwiiscan[24m has been tested on a Lenovo Thinkpad R500, XP professional
+## TESTED SYSTEMS ##
+       The  wiiscan has been tested on a Lenovo Thinkpad R500, XP professional
        (without build-in bluetooth) with a Trendnet TBW-102UB  bluetooth  don‐
        gle, and on a ASUS eeePC 1000H with XP home.
 
        Only the MS bluetooth stack was tested.
 
 
-       [1mLenovo setup[0m
+       Lenovo setup
                Windows XP professional, version 2002, SP2 USB dongle: Trendnet
                TBW-102UB  bluetooth(Broadcom  Ultimate  Low   Cost   Bluetooth
                2.0+EDR  USB),  date 24-02-2004, driver 5.1.2535.0 Microsoft BT
                stack: date 03-08-2004, driver 5.1.2600.2180
 
 
-       [1meee setup[0m
+       eee setup
                Windows XP home, version 2002, SP3 USB dongle:  buildin  Azware
                BT252,  date  13-04-2008,  driver  5.1.2600.5512  Microsoft  BT
                stack: date 13-04-2008, driver 5.1.2600.5512
 
 
-[1mBUGS[0m
-       [1m1: restart pop-up (FIXED)[0m
+## BUGS ##
+       1: restart pop-up (FIXED)
                Installing new hardware causes windows to require restart. Hap‐
                pens  once  in  a while, balloon pop-ups reports hardware, that
                where installed but not  working  properly.  A  restart  pop-up
@@ -312,7 +313,7 @@ wiiscan(1)                                                          wiiscan(1)
                dialog can anyway safly be ignored!
 
 
-       [1m2: discoverable mode fast shutdown (FIXED)[0m
+       2: discoverable mode fast shutdown (FIXED)
                Sometimes the wiimote goes quickly out of discoverable mode, it
                takes it only about 3 seconds from turn-on  to  turn-off.  This
                makes  it  hard  to obtain a connection to it. Both my wiimotes
@@ -326,34 +327,34 @@ wiiscan(1)                                                          wiiscan(1)
                wiimote connection has also been introduced.
 
 
-       [1m3: buttons not working (OPEN)[0m
+       3: buttons not working (OPEN)
                Pressing  the 1-2 button combination sometimes fails to turn-on
                the wiimote, pressing sync or power makes it  work  again.  The
                the  "1-2  button  freeze"  happens  after  a failed connection
                attempt. See also bug-2.
 
 
-       [1m4: radio null (OPEN)[0m
+       4: radio null (OPEN)
                Sometimes the BT  radio  fails  to  reinitialize  after  a  USB
                down/up     flip,     this    means    that    "RadioInfo(time‐
                out,true,dbg)"return NULL. Can be fixed by  placing  the  blue‐
                tooth radio device on another bus than the USB.
 
 
-       [1m5: keep blinking (OPEN)[0m
+       5: keep blinking (OPEN)
                Sometimes  the  wiimote is found and connected OK, but the LEDs
                keeps blinking (normal connect mode:  LEDs  are  turned  perma‐
                nently  on).  This  does however not affect connectability, and
                the wiimote does not turn off again automatically.
 
 
-       [1m6: failed to find wiimote (OPEN)[0m
+       6: failed to find wiimote (OPEN)
                Wiimote failed to find devices. This may be a  non-fatal  error
                or   an   error   caused   by   an   undervolted  wiimote.  The
                "wiiuse_find(0x0,4,2/4/6)" keeps returning 0.
 
 
-       [1m7: remove failed (OPEN)[0m
+       7: remove failed (OPEN)
                Sometimes the remove steps fails, but this may be non-fatal
 
                 Removing device <Nintendo RVL-CNT-01>
@@ -361,7 +362,7 @@ wiiscan(1)                                                          wiiscan(1)
                 Done [FAILED]
 
 
-       [1m8; balloon-tips (FIXED)[0m
+       8; balloon-tips (FIXED)
                Balloon-tips are annoying when connecting new  hardware.  Small
                fix: do
 
@@ -372,13 +373,13 @@ wiiscan(1)                                                          wiiscan(1)
                 "EnableBalloonTips"=dword:00000000
 
 
-       [1m9: double delete (FIXED)[0m
+       9: double delete (FIXED)
                Double delete of nintendo device may cause  BluetoothFindFirst‐
                Device()  to return null Fixed by removing the throw, replacing
                it with a "if (hbf()==NULL) then return false"
 
 
-       [1m10: BSoD (OPEN)[0m
+       10: BSoD (OPEN)
                The "Blue Screen of Death" was encountered a number  of  times,
                indicating  a errorneous device driver. The cause may be in the
                MS bluetooth stack or  in  the  wiiuse  lib.  The  BSoD  mainly
@@ -389,7 +390,7 @@ wiiscan(1)                                                          wiiscan(1)
                stack: date 03-08-2004, driver 5.1.2600.2180" (Lenovo version).
 
 
-       [1m11: New Hardware found wizard (OPEN)[0m
+       11: New Hardware found wizard (OPEN)
                Sometimes the wizard appears out of the blue, when deleting the
                HID entry and trying to reinstall it. It is the call Bluetooth‐
                SetServiceState(...) that messes the  Window  system  up.  Dis‐
@@ -399,7 +400,7 @@ wiiscan(1)                                                          wiiscan(1)
                cure this defect.
 
 
-       [1m12: Devcon hangs (FIXED)[0m
+       12: Devcon hangs (FIXED)
                The devcon commands sometimes hangs at the diable USB  command.
                The  state of the USB controllers, and BT devices are undefined
                (some BT devices disabled, others not) and manually  trying  to
@@ -409,7 +410,7 @@ wiiscan(1)                                                          wiiscan(1)
                FIX: reboot the machine.
 
 
-       [1m13: Open Device fails to find a Nintendo (PARTLY FIXED)[0m
+       13: Open Device fails to find a Nintendo (PARTLY FIXED)
                When opening  a  named  nintendo  device,  say  'Nintendo  RVL-
                CNT-01',  the  bluetooth fails to get the name from the device.
                This results in an empty name, and hence matching on  the  name
@@ -420,7 +421,7 @@ wiiscan(1)                                                          wiiscan(1)
                the ini file.
 
 
-       [1m14: Wiiscan fails to run (FIXED)[0m
+       14: Wiiscan fails to run (FIXED)
                Running wiiscan in a dosbox makes it terminate immidiatly. Run‐
                ning the tray version, or under MS VS Express causes it to dis‐
                play an missing DLL dialog (msvcp90.dll and friends).
@@ -430,7 +431,7 @@ wiiscan(1)                                                          wiiscan(1)
                of dynamic DLLs.
 
 
-       [1m15: BluetoothFindFirstDevice() stalls (FIXED)[0m
+       15: BluetoothFindFirstDevice() stalls (FIXED)
                The BluetoothFindFirstDevice() sometimes newer returns. Happens
                only for MS stack version "Microsoft BT stack: date 13-04-2008,
                driver 5.1.2600.5512" (eee stack).
@@ -445,51 +446,41 @@ wiiscan(1)                                                          wiiscan(1)
                out.
 
 
-       [1m16: Wiimote drops connection after scanning (PARTLY FIXED)[0m
+       16: Wiimote drops connection after scanning (PARTLY FIXED)
                If a connection attempt goes well until the last  part,  it  is
                most likely due to low-power batteries. The final stage of con‐
                necting draw extra power, that might cause the wiimote to shut‐
                down.
 
+## SEE ALSO ##
+wiiuse
 
-[1mSEE ALSO[0m
-       [1mwiiuse    [22mWiiuse  is  a library written in C that connects with several
-               Nintendo Wii remotes. Supports  motion  sensing,  IR  tracking,
-               nunchuk,  classic controller, and the Guitar Hero 3 controller.
-               Single threaded and nonblocking makes a light weight and  clean
-               API.
+	Wiiuse  is  a library written in C that connects with several Nintendo Wii remotes. Supports  motion  sensing,  IR  tracking, nunchuk,  classic controller, and the Guitar Hero 3 controller. Single threaded and nonblocking makes a light weight and  clean API. Licensed  under  GNU  GPLv3  and GNU LGPLv3 (non-commercial) by Michael Laforest (<http:www.wiiuse.net/>)
 
-               Licensed  under  GNU  GPLv3  and GNU LGPLv3 (non-commercial) by
-               Michael Laforest,
+Wiimote Whiteboard
 
-               (http:www.wiiuse.net/)
+	Whiteboard software by Johnny Chung Lee.
+	
+	(http:www.cs.cmu.edu/~johnny/projects/wii/,
+	http:www.wiimoteproject.com/)
 
+devcon(1)
 
-       [1mWiimote Whiteboard[0m
-
-               Whiteboard software by Johnny Chung Lee.
-
-               (http:www.cs.cmu.edu/~johnny/projects/wii/,
-               http:www.wiimoteproject.com/)
+	   USB management software.
+	
+	   (http:support.microsoft.com/kb/311272)
 
 
-       [1mdevcon(1)[0m
-
-               USB management software.
-
-               (http:support.microsoft.com/kb/311272)
-
-
-[1mVERSION[0m
+## VERSION ##
        Version 0.9 NDEBUG
 
 
-[1mAUTHOR[0m
+## AUTHOR ##
        Carsten  Frigaard,  Mergeit  ApS,  Kongsvang  Allé 37, DK-8000 Århus C,
        www.mergit.dk
 
 
-[1mCOPYRIGHT[0m
+## COPYRIGHT ##
        Copyright © 2009 MergeIt, Aps. License LGPL3 : GNU lesser GPL,  version
        3, <http:www.gnu.org/licenses/lgpl.txt>. This is free software: you are
        free to change and redistribute it. There is NO WARRANTY, to the extent
@@ -497,4 +488,4 @@ wiiscan(1)                                                          wiiscan(1)
 
 
 
-                                  26 Mar 2009                       wiiscan(1)
+26 Mar 2009                       wiiscan(1)
