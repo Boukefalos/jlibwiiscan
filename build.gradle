@@ -7,16 +7,24 @@ repositories {
     maven {
         url 'https://github.com/Boukefalos/jlibloader/raw/mvn-repo/'
     }
+    maven {
+        url 'https://github.com/Boukefalos/libwiiuse/raw/mvn-repo/'
+    }
+    maven {
+        url 'https://github.com/Boukefalos/jlibwiiscan/raw/mvn-repo/'
+    }
     mavenCentral()
 }
 
 dependencies {
     compile 'com.github.boukefalos:jlibloader:0.3'
+    compile 'com.github.boukefalos:jlibwiiscan:0.9'
 }
 
 group = 'com.github.boukefalos'
 project.archivesBaseName = 'jlibwiiscan'
-version = '0.9'
+version = '0.1'
+jniVersion = '0.9'
 
 task wrapper(type: Wrapper) {
     gradleVersion = '1.12'
@@ -96,7 +104,7 @@ binaries.withType(SharedLibraryBinary) { binary ->
         }
         jniPom.groupId = project.group
         jniPom.artifactId = nativeJar.baseName
-        jniPom.version = version
+        jniPom.version = jniVersion
         jniPom.scopeMappings.mappings.clear()
     }
     def builderTask = binary.tasks.builder
@@ -121,7 +129,7 @@ mainPom.withXml { provider ->
         def dep = deps.appendNode('dependency')
         dep.appendNode('groupId', project.group)
         dep.appendNode('artifactId', "${project.archivesBaseName}-${platform}")
-        dep.appendNode('version', version)
+        dep.appendNode('version', jniVersion)
     }    
     def dep = deps.appendNode('dependency')
     dep.appendNode('groupId', 'com.github.boukefalos')
