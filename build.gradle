@@ -11,12 +11,11 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.boukefalos:jlibloader:0.2'
-    testCompile 'junit:junit:4.11'
+    compile 'com.github.boukefalos:jlibloader:0.3'
 }
 
 group = 'com.github.boukefalos'
-project.archivesBaseName = 'wiiscan'
+project.archivesBaseName = 'jlibwiiscan'
 version = '0.9'
 
 task wrapper(type: Wrapper) {
@@ -50,16 +49,7 @@ model {
                 List<String> getStaticLibraryArchiverArgs() { [] }
             })
         }
-    }    
-    repositories {
-        libs(PrebuiltLibraries) {
-            usb { lib ->
-                binaries.withType(StaticLibraryBinary) {
-                    staticLibraryFile = file("lib/${targetPlatform.name}/libusb-1.0.dll")
-                }
-            }
-        }
-    }    
+    }
 }
 
 libraries {
@@ -69,7 +59,6 @@ libraries {
     all {
         binaries.all {
             linker.args '-Wl,--kill-at', '-static-libgcc', '-static-libstdc++'
-            // lib library: 'usb', linkage: 'static'
         }
     }
 }
@@ -113,8 +102,9 @@ binaries.withType(SharedLibraryBinary) { binary ->
     def builderTask = binary.tasks.builder
     def libraryDirectory = project.group.replace('.', '/') + "/${project.archivesBaseName}/${variantName}" 
     nativeJar.into(libraryDirectory) {
-        from builderTask.outputFile
-        from file("lib/${targetPlatform.name}/libusb0.dll")
+        from builderTask.outputFile        
+        from file("bin/wiiscan.exe")
+        from file("bin/DelcomDLL.dll")
     }
     // nativeJar.dependsOn builderTask
 }
@@ -131,10 +121,18 @@ mainPom.withXml { provider ->
         def dep = deps.appendNode('dependency')
         dep.appendNode('groupId', project.group)
         dep.appendNode('artifactId', "${project.archivesBaseName}-${platform}")
-        dep.appendNode('version', jniVersion)
-    }
+        dep.appendNode('version', version)
+    }    
     def dep = deps.appendNode('dependency')
     dep.appendNode('groupId', 'com.github.boukefalos')
     dep.appendNode('artifactId', 'jlibloader')
     dep.appendNode('version', '0.3')
+    dep = deps.appendNode('dependency')
+    dep.appendNode('groupId', 'com.github.boukefalos')
+    dep.appendNode('artifactId', 'libwiiuse')
+    dep.appendNode('version', '0.15')
+}
+
+jar {
+    from sourceSets.main.allSource
 }
